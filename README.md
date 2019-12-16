@@ -7,4 +7,7 @@ Finds numerous affordable flight and lodging options for a designated trip
 ![fifth](https://user-images.githubusercontent.com/55225987/70907244-39f72680-1fbd-11ea-9d70-b76f203db53b.jpg)
 ![sixth](https://user-images.githubusercontent.com/55225987/70907234-32d01880-1fbd-11ea-9ee3-33e410924239.jpg)
 
-Acknowledgements
+# Acknowledgements
+- Skyscanner API
+- Aiport Info API
+- Google Maps API
