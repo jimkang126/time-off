@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Time Off</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Condensed|Staatliches&display=swap" rel="stylesheet">
+    <style>
+        #title {
+            position: absolute;
+            left:0;
+            top: 23%;
+            width: 100%;
+            text-align: center;
+        }
+        #to-plan {
+            position: absolute;
+            left:0;
+            top: 60%;
+            width: 100%;
+            text-align: center;
+        }
+        body {
+            margin: 0; 
+            padding: 0; 
+            background-image: url(/static/img/beach.jpg); 
+            height:100%; 
+            background-repeat: no-repeat; 
+            background-position: 50% 0%; 
+            background-size: cover;
+        }
+        .button {
+            background-color: rgb(219, 180, 180);
+            border: 2px solid black;
+            color: black;
+            padding: 7px 18px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-family: Staatliches;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id = "title">
+        <h1 style = "font-family: Staatliches; font-size: 370%; color: black;">Welcome {{name}}!</h1>
+        <h2 style = "font-family: Staatliches; font-size: 230%; color: black;">Time to Start Planning Your Trip!</h2>
+        <h2 style = "font-family: Staatliches; font-size: 140%; color: black;">Click below to start planning</h2>
+    </div>
+    <div id="to-plan">
+            <p style = "text-align: center;"><a class="btn btn-lg btn-success" href="/begin_planning"><button class ="button">Plan</button></a></p>
+        </div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<html>
+    <head> 
+        <title>Trip Options</title>
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Saira+Condensed|Staatliches&display=swap" rel="stylesheet">
+        <style>
+        table {
+            border-radius: 5px;
+        }
+        tr {
+            border: 1px #DDDDDD;
+        }
+        #flight-table {
+	        width: 350px;
+            top: 282px;
+            left: 200px;
+            position: absolute;
+            line-height: 15px;
+        }
+        #hotel-table {
+            width: 630px;
+            top: 10px;
+            left: 580px;
+            position: absolute;
+            line-height: 15px;
+        }
+        #title {
+            top: 10px;
+            left: 200px; 
+            position: absolute;
+            font-family: Staatliches;
+            color: rgb(36, 49, 65);
+            border: 1px solid black;
+            padding: 10px;
+            width: 325px;
+        }
+        #flight-container {
+            background-color: #FFF;
+            padding: 10px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            border: 1.47px solid #DBE1E8;
+        }
+        #hotel-container {
+            background-color: #FFF;
+            padding: 10px;
+            border-radius: 2px;
+            box-sizing: border-box;
+            border: 1.47px solid #DBE1E8;
+        }
+        .options th h3 {
+            font-weight: lighter;
+            font-size: 18px;
+            text-align: left;
+            color: white;
+            margin-top: 5.5px;
+            line-height: 3px;
+        }
+        .options td {
+            font-weight: lighter;
+            font-size: 1em;
+        }
+        .options {
+            text-align: left;
+            overflow: hidden;
+            width: 100%;
+            margin: 15 0 0 0;
+            display: table;
+            padding: 0 0 8em 0;
+        }
+        .options td, .options th {
+            padding-bottom: 0.7%;
+            padding-top: 2.5%;
+            padding-left:1.8%;  
+        }
+        .options th {
+            background-color: #34363B;
+        }
+        </style>
+    </head>
+    <body style ="background-image: url(/static/img/abstract.jpg); background-repeat: no-repeat; background-size: cover;">
+        <div id="title">
+            <div id="content">
+                <h1 style = "font-size: 220%;">Time to choose!</h1>
+                <h2 style = "font-size: 125%;">You can choose which flight you would like to be on and where you would like to stay</h2>
+                <h2 style = "font-size: 125%;">Have fun with your time off!</h2>
+            </div> 
+        </div>
+        <div id="flight-table">
+            <div id="flight-container">
+                <h2 style ="text-align: center; font-family: Staatliches;">Flights</h2>
+                <table class="options" frame=hsides rules=rows>
+                    <thead>
+                    <tr>
+                    <th><h3>Name</h3></th>
+                    <th><h3>Price</h3></th> 
+                    <th><h3>Buy Now!</h3></th>
+                    </tr>
+                    </thead>
+                <tbody>        
+                {% for option in flight_options %} 
+                    <tr height = 20px>
+                        <td class="c1" style="line-height:27px;"><img src="{{ option.ImageUrl }}" width=20px>{{ option.Name }}</td>
+                        <td class="c2" style="line-height:27px;">{{ option.Price }}</td>
+                        <td class="c3" style="line-height:27px;"><a href='{{ option.DeeplinkUrl }}'><button>Buy Ticket</button></a></td>
+                    </tr>      
+                {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="hotel-table">
+            <div id="hotel-container">
+                <h2 style = "text-align: center; font-family: Staatliches;">Hotels</h2>
+                <table class="options" frame=hsides rules=rows>
+                    <thead>
+                    <tr>
+                    <th><h3>Hotel</h3></th> 
+                    <th><h3>Rating</h3></th> 
+                    <th><h3>Phone</h3></th> 
+                    <th><h3>Address</h3></th> 
+                    </tr>
+                    </thead>
+                <tbody>        
+                {% for option in hotel_options %} 
+                    <tr height = 20px>
+                        <td class="c1" style="line-height:27px;"><img src="{{ option.icon }}" width=20px> {{ option.name }}</td>
+                        <td class="c2" style="line-height:27px;">{{ option.rating }}</td>
+                        <td class="c2" style="line-height:27px;">{{ option.formatted_phone_number }}</td>
+                        <td class="c2" style="line-height:27px;">{{ option.formatted_address }}</td>
+                    </tr>   
+                {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

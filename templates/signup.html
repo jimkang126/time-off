@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sign Up</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Condensed|Staatliches&display=swap" rel="stylesheet">
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function() {
+            $('#btnSignUp').click(function() {
+                $.ajax({
+                    url: '/createuser',
+                    data: $('form').serialize(),
+                    type: 'POST',
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+    <style>
+    #header {
+        width: 100%; 
+        height: 40px; 	
+        margin-top: 0px;
+        padding:0.5%;
+        background-color: #25292E;
+    }
+    #nav li a { 
+        color: #C8C9CB; 
+        text-decoration: none; 
+        font-weight: bold;
+        }
+    #nav li a.active { 
+        opacity:1; 
+        border-bottom: 2px;
+        text-decoration: none
+        }
+    #nav li a:hover { 
+        color: #FFFFFF; 
+        opacity:1; 
+        }
+    #nav ul {
+        font-size: 150%; 
+        font-weight: bold; 
+        margin-top: 0px;
+        list-style: none;
+    }
+    #nav li{
+        font-family: Staatliches;
+	    margin-top: -18px;
+        float: left;
+        padding-left: 30px;
+    }
+    body {
+        margin: 0; 
+        padding: 0; 
+        background-image: url(/static/img/landscape.jpg); 
+        height:100%; 
+        width: auto; 
+        background-repeat: no-repeat; 
+        background-position: 50% -7%; 
+        background-size: cover;
+    }
+    .button {
+        background-color: rgb(219, 180, 180);
+        border: 2px solid black;
+        color: black;
+        padding: 7px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-family: Staatliches;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="content">
+        <nav id="nav">
+            <ul>
+                <li><a href="/" class="active">Home</a></li>
+                {% block this %}
+                {% if session['logged_in'] %}
+                <li><a href="/logout">Logout</a></li>
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/signup">Signup</a></li>
+                {% endif %}
+                {% endblock %}
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <div id = "title">
+        <h1 style = "font-family: Staatliches; text-align: left; font-size: 200%;">Time Off</h1>
+        <h2 style = "font-family: Staatliches; text-align: left; font-size: 135%;">Trips on a Budget</h2>
+    </div>
+    {% block content %}
+    {% if session['logged_in'] %}
+    <p>Go back!</p>
+    {% else %}
+    <div id="login">
+        <div id="login-screen">
+            <form action="/signup" class="form-signin" method="POST">
+            <label style = "font-family: Saira Condensed;"><b>First Name</b></label>
+            <input type="firstname" name="firstname" class="form-control" placeholder="First Name" required autofocus>
+            <br></br>
+            <label style = "font-family: Saira Condensed;"><b>Last Name</b></label>
+            <input type="lastname" name="lastname" class="form-control" placeholder="Last Name" required autofocus>
+            <br></br>
+            <label style = "font-family: Saira Condensed;"><b>Email Address</b></label>
+            <input type="email" name="email" class="form-control" placeholder="Email Address" required autofocus>
+            <br></br>
+            <label style = "font-family: Saira Condensed;"><b>Password</b></label>
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+             
+            <button type="submit" class= "button">Create Account</button>
+            </form>
+            </div>
+        <div class="flashes">
+            {% for message in get_flashed_messages() %}
+            <h4 style = "color:white;">{{ message }}</h4>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>

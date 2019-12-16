@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Planning Time</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Saira+Condensed|Staatliches&display=swap" rel="stylesheet">
+    <style>
+    body {
+        margin: 15;
+        padding: 0;
+        height:100%;
+        background-image: url(/static/img/computer.jpg);
+        background-repeat: no-repeat;
+        background-position: 50% 0%; 
+        background-size: cover;
+    }
+    h1 {
+        line-height: 8px;
+    }
+    .button {
+        background-color: rgb(219, 180, 180);
+        border: 2px solid black;
+        color: black;
+        padding: 7px 18px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-family: Staatliches;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style = "font-family: Staatliches; font-size: 240%;">Let's plan a trip!</h1>
+        <h2 style = "font-family: Saira Condensed; font-size: 110%;">Please fill out the forms below</h2>
+    </header>
+    <form action="/begin_planning" method="POST">
+        <div id="trip">
+            <div id="trip-planning">
+                <form class="form-trip">
+                    <label style = "font-family: Saira Condensed;"><b>Origin</b></label>
+                    <input id="origin" type="origin" name="origin" class="form-control" placeholder="3 letter Aiport IATA Code" required autofocus>
+                    <br></br>
+                    <label style = "font-family: Saira Condensed;"><b>Destination</b></label>
+                    <input id="destination" type="destination" name="destination" class="form-control" placeholder="3 letter Aiport IATA Code" required autofocus>
+                    <br></br>
+                    <label style = "font-family: Saira Condensed;"><b>Depature Date</b></label>
+                    <input id="departureDate" type="departureDate" name="departureDate" class="form-control" placeholder="Ex. 2019-12-05" required autofocus>
+                    <br></br>
+                    <label style = "font-family: Saira Condensed;"><b>Return Date</b></label>
+                    <input id="returnDate" type="returnDate" name="returnDate" class="form-control" placeholder="EX. 2019-12-10" required autofocus>
+                    <br></br>
+                    <button type="submit" class="button">Finish Planning</button>
+                </form>
+            </div>
+            <br></br>
+            <div class="flashes">
+              {% for message in get_flashed_messages() %}
+                <h4>{{ message }}</h4>
+              {% endfor %}
+            </div>
+        </div>
+    </form>
+</body>
+</html>
